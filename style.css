@@ -1,4 +1,23 @@
+html {
+    background-image: url(https://i.pinimg.com/originals/a8/30/02/a83002da3a3bdceac3f3226a4f1d1bdf.gif);
+    background-repeat: repeat; }
+
+html, body 
+{
+    font-family:'Courier New', Courier, monospace;
+}
+
 h1 
 {
     color: purple;
+}
+
+h2
+{
+    color: purple;
+}
+
+body
+{
+    text-align: center;
 }

@@ -1,8 +1,8 @@
 
-function getComputerChoice 
+function getComputerChoice() 
 {
     const randomNumber = Math.random();
-    if (randomNumber < 0.33) 
+    if (randomNumber < 0.33)
     {
         return "rock";
     } 
@@ -16,8 +16,11 @@ function getComputerChoice
     }
 }
 
-function getHumanChoice
+function getHumanChoice() 
 {
+    // Prompt the user for input
+    let userInput = prompt("Enter your choice: rock, paper or scissors");
+
     // Convert user input to lowercase for case-insensitive comparison
     userInput = userInput.toLowerCase();
 
@@ -36,20 +39,49 @@ function getHumanChoice
     }
 }
 
-const userInput = prompt("Enter your choice: ");
-const humanChoice = getHumanChoice(userInput);
-
 var humanScore = 0;
 var computerScore = 0;
 
 function playRound(humanChoice, computerChoice) 
 {
-    // your code here!
-  
+    // Define the rules of the game
+    const rules = {
+        rock: { beats: 'scissors' },
+        paper: { beats: 'rock' },
+        scissors: { beats: 'paper' }
+    };
+
+    // Check if it's a tie
+    if (humanChoice === computerChoice) 
+    {
+        console.log("It's a tie!");
+        return;
+    }
+
+    // Check if human wins
+    if (rules[humanChoice]?.beats === computerChoice) 
+    {
+        console.log(`You win! ${humanChoice} beats ${computerChoice}`);
+        humanScore++; // Increment humanScore
+    } 
+    else 
+    {
+        console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
+        computerScore++; // Increment computerScore
+    }
 }
-  
-  const humanSelection = getHumanChoice();
-  const computerSelection = getComputerChoice();
-  
-  playRound(humanSelection, computerSelection);
-  
+
+// Get human and computer choices
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+
+// Play the round
+playRound(humanSelection, computerSelection);
+
+// Additional rounds for testing purposes
+playRound('rock', 'scissors');
+playRound('paper', 'scissors');
+playRound('rock', 'paper');
+
+// Display scores
+console.log(`Human Score: ${humanScore}, Computer Score: ${computerScore}`);
